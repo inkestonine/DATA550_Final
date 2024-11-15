@@ -1,0 +1,34 @@
+---
+title: "Geographic Variations in County-Level Cancer Mortality Rates: Insights from
+  2009 Data"
+author: "Shifan Yan"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+```{r set work directory, echo=F, message=F}
+here::i_am("report.Rmd")
+pacman::p_load(kableExtra)
+```
+
+# Regional County-Level Cancer Mortality Pattern
+
+```{r, echo=F}
+table <- readRDS(here::here("output/region_table.rds"))
+knitr::kable(table, caption = "County-Level Crude Cancer Mortality Rates by Region in 2009") %>%
+  kable_styling() %>%
+  footnote(general = "Excluding 339 counties due to missing data. * per 100 people ** per 100,000 people.")
+```
+
+# Geographic Disparities Map
+
+```{r,echo=F}
+#| fig.align = "center",
+#| out.width = "1800px"
+knitr::include_graphics(
+  here::here("output/map.png")
+)
+```
+
+
