@@ -20,5 +20,27 @@ The findings from this study will be used to inform public health initiatives an
 
 # Project Report
 
-- Use `make` in the terminal to build the report.
-- Use `make clean` in the terminal to clean the output.
+To build the report `report.Rmd`, run the following command:
+```{bash}
+make
+```
+
+To clean the output files in the `output/` directory and remove `.Rhistory`, run:
+
+```{bash}
+make clean
+```
+
+# Synchronize Package Repository
+
+When you clone this repository for the first time, use the following command to restore the required packages:
+
+```{bash}
+make install
+```
+
+If you add, remove, or update any packages during development, use the following command to update the project library and synchronize the renv.lock file:
+
+```{r}
+renv::snapshot()
+```

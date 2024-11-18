@@ -8,7 +8,11 @@ output/region_table.rds output/cleaned_2009.rds&: \
 	
 output/map.png: code/map.R output/cleaned_2009.rds
 	Rscript code/map.R
+	
+.PHONY: install
+install:
+	Rscript -e "renv::restore(prompt = FALSE)"
 
 .PHONY: clean
 clean:
-	rm -f output/*.png && rm -f output/*rds && rm -f .Rhistory
+	rm -f output/*.png && rm -f output/*rds && rm -f .Rhistory && rm -f report.html
