@@ -41,3 +41,8 @@ in the U.S. for 2009. It joins cleaned data with U.S. county geography, \
 generates a map `output/map.png`.
 
 - `code/render_report.R` renders `report.Rmd`.
+
+# Project Report
+
+- Use `make` in the terminal to build the report.
+- Use `make clean` in the terminal to clean the output.

@@ -11,4 +11,4 @@ output/map.png: code/map.R output/cleaned_2009.rds
 
 .PHONY: clean
 clean:
-	rm -f output/* 
+	rm -f output/*.png && rm -f output/*rds && rm -f code/.Rhistory
