@@ -1,3 +1,4 @@
+# report-associated rules (run within docker container)
 report.html: report.Rmd code/render_report.R output/region_table.rds \
  output/map.png
 	Rscript code/render_report.R
@@ -16,3 +17,17 @@ install:
 .PHONY: clean
 clean:
 	rm -f output/*.png && rm -f output/*rds && rm -f .Rhistory && rm -f report.html
+	
+# docker-associated rules (run on our local machine)
+PROJECTFILES = report.Rmd code/table.R code/map.R code/render_report.R
+RENVFILES = renv.lock renv/activate.R renv/settings.json
+
+# rule to build image
+final: Dockerfile $(PROJECTFILES) $(RENVFILES)
+	docker build -t final .
+	touch $@
+
+# rule to build the report automatically in our container
+report/report.html: report
+	docker run -v "/$(pwd)/report":/project/report final
+
