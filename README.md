@@ -45,38 +45,43 @@ pwd
 ```
 
 ## Windows User
-To clone the Github repository:
+- To clone the Github repository:
 ```{bash}
 git clone git@github.com:inkestonine/DATA550_Final.git
 ```
 
-- To build the report `report.Rmd`, run the following command:
+  - To build the report `report.Rmd`, run the following command:
 ```{bash}
 make
 ```
 
-To clean the output files in the `output/` directory and remove `.Rhistory`, run:
+  - To clean the output files in the `output/` directory and remove `.Rhistory`, run:
 
 ```{bash}
 make clean
 ```
 
-- When you clone this repository for the first time, use the following command to restore the required packages:
+  - When you clone this repository for the first time, use the following command to restore the required packages:
 
 ```{bash}
 make install
 ```
 
-If you add, remove, or update any packages during development, use the following command to update the project library and synchronize the renv.lock file:
+  - If you add, remove, or update any packages during development, use the following command to update the project library and synchronize the renv.lock file:
 
 ```{r}
 renv::snapshot()
+```
+- To run the automated version of the image and generate the report
+```{bash}
+docker run -v "/$(pwd)":/project/report final
 ```
 
 ## Mac/Linux-OS User
 
 
 - To run the automated version of the image and generate the report `report.html`, use the following command:
+
 ```{bash}
-make report/report.html
+docker run -v "$(pwd)":/project/report final
 ```
